@@ -1,0 +1,24 @@
+﻿@model WebPortalUser.Models.DenemeModel
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+
+
+<h2>@Model.Title</h2>
+<h3>@Model.BDate.ToShortDateString()</h3>
+<div class="row">
+    <ul class="list-group">
+        @foreach (var item in Model.Items)
+        {
+            <li class="list-group-item">@item</li>
+        }
+    </ul>
+    <h1>KullaniciGruplari</h1>
+    @*@foreach (SelectListItem item in (List<SelectListItem>)TempData["KullaniciGruplari"])
+    {
+        @item.Text
+    }*@
+</div>

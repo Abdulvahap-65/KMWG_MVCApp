@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.DropDownList("Kategoriler")
+
+@Html.DropDownList("Kategoriler", new SelectList(ViewBag.Kategoriler, "Value", "Text"), "Kategori Seçiniz", new { @class = "form-control" })

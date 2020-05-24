@@ -1,0 +1,51 @@
+﻿@model WebPortalUser.Models.DenemeModel
+@{
+    ViewBag.Title = "Profile";
+}
+<h2>Profile</h2>
+
+@Html.HiddenFor(model => model.Id, new { @class = "form-control" })
+@Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+@Html.EditorFor(model => model.BDate, new { htmlAttributes = new { @class = "form-control" } })
+@Html.EditorFor(model => model.Kilo, new { htmlAttributes = new { @class = "form-control" } })
+@Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password" })
+@Html.EnumDropDownListFor(model => model.Cinsiyet, new { @class = "form-control" })
+@Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @readonly = "readonly" })
+@Html.ListBoxFor(model => model.Address, Model.Address.Select(x => new SelectListItem()
+{
+    Text = x,
+    Value = x
+}), new { @class = "form-control" })
+
+@Html.DropDownListFor(model => model.UserGroup, new List<SelectListItem>()
+{
+   new SelectListItem()
+   {
+       Value="1",
+       Text="Admin"
+   },
+   new SelectListItem()
+            {
+                Value = "2",
+                Text = "Editor"
+            },
+   new SelectListItem()
+            {
+                Value = "3",
+                Text = "User"
+            },
+   new SelectListItem()
+            {
+                Value = "4",
+                Text = "SystemAdmin"
+            }
+
+
+}, new { @class = "form-control" })
+
+<div class="form-group">
+    @Html.LabelFor(model => model.UserGroup, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(model => model.UserGroup, (List<SelectListItem>)ViewBag.KullaniciGruplari, new { @class = "form-control" })
+    </div>
+</div>

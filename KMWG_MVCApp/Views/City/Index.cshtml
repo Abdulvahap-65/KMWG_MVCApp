@@ -1,0 +1,65 @@
+﻿@model KMWG_MVCApp.Models.CityModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<h3>Cities</h3>
+@*using (Html.BeginForm("Index", "City", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+
+@using (Html.BeginForm("SaveCity", "City", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="box box-body">
+        <div class="form-group">
+            @Html.Label("lblName", "Name", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("Name", "", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("lblCountryName", "Country Name", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("CountryName", "", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("lblPopulation", "Population", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("Population", "", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("lblCapital", "Capital", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownList("Capital", EnumHelper.GetSelectList(typeof(KMWG_MVCApp.Models.capitalEnum)), "" + "Is it capital?", new { @class = "form-control" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("lblPlateNumber", "Plate Number", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("PlateNumber", "", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("lblZipCode", "Zip Code", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("ZipCode", "", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="box box-footer">
+
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-default">
+                    Gönder
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+}
