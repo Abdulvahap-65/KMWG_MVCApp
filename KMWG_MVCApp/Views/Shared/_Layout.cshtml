@@ -13,11 +13,11 @@
         <div class="navbar-header">
             <div class="navbar-brand">
                 @{
-                    @*if (Session["UserInfo"] != null)
+                    if (Session["UserInfo"] != null)
                     {
-                        Session["UserInfo"].ToString();
-                                        @:Hoş geldiniz
-                    }*@
+                        <div>@Session["UserInfo"].ToString() Hoş geldiniz</div>
+
+                    }
                 }
 
             </div>
@@ -26,9 +26,9 @@
         @Html.ActionLink("Tüm Kullanıcılar", "TumListe", "Home", new { @class = "navbar-brand" })
         @Html.ActionLink("Profil", "Profile", "Home", new { @class = "navbar-brand" })
         <ul class="nav navbar-nav navbar-right">
-            @Html.ActionLink(" ", "Exit", "Home", new { @class = "navbar-brand glyphicon glyphicon-log-out",@title="Çıkış Yap" })
+            @Html.ActionLink(" ", "Exit", "Home", new { @class = "navbar-brand glyphicon glyphicon-log-out", @title = "Çıkış Yap" })
         </ul>
-       
+
 
     </div>
 
