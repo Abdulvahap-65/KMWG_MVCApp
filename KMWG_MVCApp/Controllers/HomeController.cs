@@ -26,13 +26,48 @@ namespace KMWG_MVCApp.Controllers
                 _xrmContext = new XrmServiceContext(_crmSdkService.OrganizationService);
         }
 
+        public ActionResult Login()
+        {
+
+            return View();
+        }
+
+        public ActionResult Details(Guid id)
+        {
+            var user = _xrmContext.uzm_portaluserSet.Where(u => u.Id == id).FirstOrDefault();
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult Login(UserLogin loginModel)
+        {
+            var user = _xrmContext.uzm_portaluserSet.Where(u => u.uzm_username == loginModel.UserName && u.uzm_password == loginModel.Password).FirstOrDefault();
+            if (user != null)
+            {
+                Session["UserInfo"] = user.uzm_username;
+                return RedirectToAction("TumListe");
+            }
+
+            else
+                return RedirectToAction("Error");
+        }
+        public ActionResult Error()
+        {
+            return View();
+        }
+        public ActionResult Exit()
+        {
+            return RedirectToAction("Login");
+        }
+
         #endregion
 
         [HttpPost]
         public ActionResult SaveUser(UserModel usermodel)
         {
             AddPortalUser(usermodel);
-            return RedirectToAction("Index");
+            return RedirectToAction("TumListe");
         }
 
         // GET: Home
@@ -55,22 +90,43 @@ namespace KMWG_MVCApp.Controllers
             //cityList = GetCity();
 
             //GetCity();
-            List<City> IcerikTurListe = (from k in _xrmContext.uzm_citySet
-                                                   select new City
-                                                   {
-                                                      Name = k.uzm_name,
-                                                      Id = k.Id
-                                                   }
-        ).ToList();
-        
-            ViewBag.List = new SelectList(IcerikTurListe, "Id", "Name");
-            return View();
+            List<uzm_city> cityList = (from k in _xrmContext.uzm_citySet
+                                       select new uzm_city
+                                       {
+                                           uzm_name = k.uzm_name,
+                                           uzm_cityId = k.uzm_cityId
+                                       }
+        ).ToList();//uzm_city varlığında kayıtlı olan bütün illeri çektim.
 
-           // return View(userModel);
+
+            foreach (uzm_city cid in cityList)
+            {
+                Guid cityid = cid.uzm_cityId.Value;//Kayıtlı illerin ID'sini teker teker görüyorum.
+
+
+            }
+
+
+            ViewBag.CityList = new SelectList(cityList, "uzm_cityId", "uzm_name");
+
+            return View();
+        }
+        public ActionResult TumListe()
+        {
+            List<uzm_portaluser> tumListe = _xrmContext.uzm_portaluserSet.ToList();
+            return View(tumListe);
         }
 
+        [HttpPost]
+        public ActionResult GetCounty(Guid? cityId)
+        {
+            var tekCity = _xrmContext.uzm_citySet.Where(c => c.uzm_cityId == cityId).FirstOrDefault();
 
 
+            List<uzm_county> countyList = _xrmContext.uzm_countySet.Where(x => x.uzm_cityid.Id == cityId).ToList();
+
+            return Json(countyList);
+        }
         [HttpPost]
 
         public ActionResult Index(DB.User user, DB.Addresses addresses, DB.UserGroup userGroup)
@@ -82,12 +138,6 @@ namespace KMWG_MVCApp.Controllers
             return View();
         }
 
-        #region -Result Tiplerinde İşlenecek-
-        //public FileResult Download(string adi)
-        //{
-        //    return File("", "");
-        //}
-        #endregion
         public new ActionResult Profile(int id = 10)
         {
             #region -1.Model Oluşturma-
@@ -137,19 +187,68 @@ namespace KMWG_MVCApp.Controllers
             return View(user);
         }
 
+        #region -NOT:C# null controlers-
+        #region -1.Date_Time-
+        //public DateTime? CreatedOn { get; set; }//Modelde olacak.
+        /* if(countrymodel.CreatedOn != null)
+           {
+               entity["createdon"] = countrymodel.CreatedOn;
+           }*///Conroler'da olacak.
+        #endregion
+        #region -2.Option Setleme-
+        // public nationalityEnum? Nationality { get; set; }//Modelde oacak.
+        /* public enum nationalityEnum
+         {
+             American = 1,
+             Turkish = 2,
+             French = 3,
+             British = 4,
+             Others = 5
+         }*/
+        //if (countrymodel.Nationality != null)
+        //      entity["uzm_isnationality"] = new OptionSetValue((int) countrymodel.Nationality);
+        //Controler tarafında olacak
+        #endregion
+        #region -3.Int-
+        //public int? Population { get; set; }//model tarafında olacak.
+
+        //  if (countrymodel.Population != null)
+        //            entity["uzm_population"] = countrymodel.Population;//Controler tarafında olacak.
+
+        #endregion
+        #endregion
         public void AddPortalUser(UserModel usermodel)
         {
             Entity entity = new Entity("uzm_portaluser");
-            entity["uzm_username"] = usermodel.UserName;
+
+            //entity["uzm_username"] = usermodel.UserName != null ? usermodel.UserName : "";
             entity["uzm_bdate"] = usermodel.BDate;
+
+            //  if(usermodel.BDate != null)
+            //{
+            //    entity["uzm_bdate"] = usermodel.BDate;
+            //}
             entity["uzm_iscinsiyet"] = new OptionSetValue((int)usermodel.Cinsiyet);
-            entity["uzm_iscountry"] = new OptionSetValue((int)usermodel.Country);
+            //if (usermodel.Cinsiyet != null)
+            //entity["uzm_iscinsiyet"] = new OptionSetValue((int)usermodel.Cinsiyet);
+
             entity["uzm_name"] = usermodel.Name;
+            //entity["uzm_name"] = usermodel.Name != null ? usermodel.Name : "";
             entity["uzm_sifre"] = usermodel.Password;
+            //entity["uzm_sifre"] = usermodel.Password!= null ? usermodel.Password : "";
             entity["uzm_subject"] = usermodel.Konu;
+            //entity["uzm_subject"] = usermodel.Konu != null ? usermodel.Konu : "";
             entity["uzm_weight"] = usermodel.Kilo;
-            entity["uzm_password"] = usermodel.Password1;
+            //if (usermodel.Kilo != null)
+            //    entity["uzm_weight"] = usermodel.Kilo;
+            //entity["uzm_password"] = usermodel.Password1 != null ? usermodel.Password1 : "";
             var id = SaveToCrm(entity);
+            if (id != null)
+            {
+                RedirectToAction("TumListe");
+            }
+            else
+                RedirectToAction("Error");
         }
 
         public Guid? SaveToCrm(Entity entity)
@@ -166,96 +265,11 @@ namespace KMWG_MVCApp.Controllers
             }
             return id;
         }
-        // List<uzm_nationality> NationalityList = _xrmContext.uzm_nationalitySet.ToList();
-        // uzm_nationality ulus = (from I in NationalityList
-        //                        where I.uzm_name == wantedNationality
-        //                     select I).FirstOrDefault();
 
-
-        // List<uzm_city> CityList = _xrmContext.uzm_citySet.ToList();
-       //// uzm_city CityName = _xrmContext.uzm_citySet.Select(x => new uzm_city()
-       // {
-       //     uzm_name = x.uzm_name,
-       //     uzm_cityId = x.uzm_cityId
-       // }).ToList();//4 tane ayrı alan döndürür.
-
-
-
-        public List<uzm_city> GetCity()
-        {
-            List<uzm_city> CityList = _xrmContext.uzm_citySet.ToList();
-             //// uzm_city CityName = _xrmContext.uzm_citySet.Select(x => new uzm_city()
-       // {
-       //     uzm_name = x.uzm_name,
-       //     uzm_cityId = x.uzm_cityId
-       // }).ToList();//4 tane ayrı alan döndürür.
-
-            //List<string[]> cities = new List<string[]>();
-
-            try
-            {
-
-                //var query = (from I  in _xrmContext.CreateQuery("uzm_city")
-                //             select new string[]
-                //             {
-                //                 I["uzm_cityId"].ToString(),
-                //                 (string)I["uzm_name"]
-                //             }).ToList();
-                //if (query != null && query.Count > 0)
-                //    cities = query;
-
-                List<uzm_city> CityName = _xrmContext.uzm_citySet.Select(x => new uzm_city()
-                {
-                    uzm_name = x.uzm_name,
-                    uzm_cityId = x.uzm_cityId
-                }).ToList();//4 tane ayrı alan döndürür.
-
-                foreach (uzm_city city1 in CityName)
-                {
-                    Console.WriteLine("Adı:{0} Soyadı:{1} ", city1.uzm_name, city1.uzm_cityId);
-                }
-                if (CityName != null && CityName.Count > 0)
-                    CityList = CityName;
-
-
-            }
-            catch (Exception ex)
-            {
-                throw ex.GetBaseException();
-            }
-            return CityList;
-        }
-
-        //public List<string[]> GetCity()
-        //{
-
-        //    List<string[]> cities = new List<string[]>();
-        //    try
-        //    {
-
-        //        var query = (from I in _xrmContext.CreateQuery("uzm_city")
-        //                     select new string[]
-        //                     {
-        //                         I["uzm_cityId"].ToString(),
-        //                         (string)I["uzm_name"]
-        //                     }).ToList();
-        //        if (query != null && query.Count > 0)
-        //            cities = query;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex.GetBaseException();
-        //    }
-        //    return cities;
-        //}
 
     }
 
 }
-// name = (c.Attributes.Contains("name")) ? c["name"].ToString() : "",
-//  IsNullOrEmpty(String str)
-//DateTime dat = new DateTime();
-//entity["uzm_username"] = usermodel.UserName != null ? usermodel.UserName : "";NOT:C# null controler a bak:
 
 
 

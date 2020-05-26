@@ -9878,6 +9878,24 @@ namespace KMWG_MVCApp.DB
 		}
 		
 		/// <summary>
+		/// 1:N lk_uzm_county_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uzm_county_createdby")]
+		public System.Collections.Generic.IEnumerable<uzm_county> lk_uzm_county_createdby
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_county>("lk_uzm_county_createdby", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("lk_uzm_county_createdby");
+				this.SetRelatedEntities<uzm_county>("lk_uzm_county_createdby", null, value);
+				this.OnPropertyChanged("lk_uzm_county_createdby");
+			}
+		}
+		
+		/// <summary>
 		/// 1:N lk_systemuser_createdonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
@@ -10036,6 +10054,24 @@ namespace KMWG_MVCApp.DB
 				this.OnPropertyChanging("lk_uzm_category_createdonbehalfby");
 				this.SetRelatedEntities<uzm_category>("lk_uzm_category_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_uzm_category_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_uzm_county_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uzm_county_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<uzm_county> lk_uzm_county_createdonbehalfby
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_county>("lk_uzm_county_createdonbehalfby", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("lk_uzm_county_createdonbehalfby");
+				this.SetRelatedEntities<uzm_county>("lk_uzm_county_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_uzm_county_createdonbehalfby");
 			}
 		}
 		
@@ -10202,6 +10238,24 @@ namespace KMWG_MVCApp.DB
 		}
 		
 		/// <summary>
+		/// 1:N lk_uzm_county_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uzm_county_modifiedby")]
+		public System.Collections.Generic.IEnumerable<uzm_county> lk_uzm_county_modifiedby
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_county>("lk_uzm_county_modifiedby", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("lk_uzm_county_modifiedby");
+				this.SetRelatedEntities<uzm_county>("lk_uzm_county_modifiedby", null, value);
+				this.OnPropertyChanged("lk_uzm_county_modifiedby");
+			}
+		}
+		
+		/// <summary>
 		/// 1:N lk_accountbase_modifiedonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_accountbase_modifiedonbehalfby")]
@@ -10360,6 +10414,24 @@ namespace KMWG_MVCApp.DB
 				this.OnPropertyChanging("lk_uzm_category_modifiedonbehalfby");
 				this.SetRelatedEntities<uzm_category>("lk_uzm_category_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_uzm_category_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_uzm_county_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uzm_county_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<uzm_county> lk_uzm_county_modifiedonbehalfby
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_county>("lk_uzm_county_modifiedonbehalfby", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("lk_uzm_county_modifiedonbehalfby");
+				this.SetRelatedEntities<uzm_county>("lk_uzm_county_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_uzm_county_modifiedonbehalfby");
 			}
 		}
 		
@@ -11844,6 +11916,42 @@ namespace KMWG_MVCApp.DB
 		}
 		
 		/// <summary>
+		/// 1:N new_uzm_city_uzm_portaluser_cityid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("new_uzm_city_uzm_portaluser_cityid")]
+		public System.Collections.Generic.IEnumerable<uzm_portaluser> new_uzm_city_uzm_portaluser_cityid
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_portaluser>("new_uzm_city_uzm_portaluser_cityid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("new_uzm_city_uzm_portaluser_cityid");
+				this.SetRelatedEntities<uzm_portaluser>("new_uzm_city_uzm_portaluser_cityid", null, value);
+				this.OnPropertyChanged("new_uzm_city_uzm_portaluser_cityid");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N uzm_uzm_city_uzm_county_cityid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("uzm_uzm_city_uzm_county_cityid")]
+		public System.Collections.Generic.IEnumerable<uzm_county> uzm_uzm_city_uzm_county_cityid
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_county>("uzm_uzm_city_uzm_county_cityid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_uzm_city_uzm_county_cityid");
+				this.SetRelatedEntities<uzm_county>("uzm_uzm_city_uzm_county_cityid", null, value);
+				this.OnPropertyChanged("uzm_uzm_city_uzm_county_cityid");
+			}
+		}
+		
+		/// <summary>
 		/// N:1 lk_uzm_city_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
@@ -12347,6 +12455,420 @@ namespace KMWG_MVCApp.DB
 			get
 			{
 				return this.GetRelatedEntity<SystemUser>("lk_uzm_country_modifiedonbehalfby", null);
+			}
+		}
+	}
+
+	[System.Runtime.Serialization.DataContractAttribute()]
+	public enum uzm_countyState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 1,
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("uzm_county")]
+	public partial class uzm_county : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		public uzm_county() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "uzm_county";
+		
+		public const int EntityTypeCode = 10418;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_countyid")]
+		public override System.Guid Id
+		{
+			get
+			{
+				return base.Id;
+			}
+			set
+			{
+				this.uzm_countyId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Status of the County
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<uzm_countyState> statecode
+		{
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((uzm_countyState)(System.Enum.ToObject(typeof(uzm_countyState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			set
+			{
+				this.OnPropertyChanging("statecode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("statecode");
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the County
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue statuscode
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			set
+			{
+				this.OnPropertyChanging("statuscode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("statuscode");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_cityid")]
+		public Microsoft.Xrm.Sdk.EntityReference uzm_cityid
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("uzm_cityid");
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_cityid");
+				this.SetAttributeValue("uzm_cityid", value);
+				this.OnPropertyChanged("uzm_cityid");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for entity instances
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_countyid")]
+		public System.Nullable<System.Guid> uzm_countyId
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("uzm_countyid");
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_countyId");
+				this.SetAttributeValue("uzm_countyid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("uzm_countyId");
+			}
+		}
+		
+		/// <summary>
+		/// The name of the custom entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_name")]
+		public string uzm_name
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("uzm_name");
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_name");
+				this.SetAttributeValue("uzm_name", value);
+				this.OnPropertyChanged("uzm_name");
+			}
+		}
+		
+		/// <summary>
+		/// Version Number
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_uzm_county_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uzm_county_createdby")]
+		public SystemUser lk_uzm_county_createdby
+		{
+			get
+			{
+				return this.GetRelatedEntity<SystemUser>("lk_uzm_county_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_uzm_county_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uzm_county_createdonbehalfby")]
+		public SystemUser lk_uzm_county_createdonbehalfby
+		{
+			get
+			{
+				return this.GetRelatedEntity<SystemUser>("lk_uzm_county_createdonbehalfby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_uzm_county_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uzm_county_modifiedby")]
+		public SystemUser lk_uzm_county_modifiedby
+		{
+			get
+			{
+				return this.GetRelatedEntity<SystemUser>("lk_uzm_county_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_uzm_county_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uzm_county_modifiedonbehalfby")]
+		public SystemUser lk_uzm_county_modifiedonbehalfby
+		{
+			get
+			{
+				return this.GetRelatedEntity<SystemUser>("lk_uzm_county_modifiedonbehalfby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 uzm_uzm_city_uzm_county_cityid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_cityid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("uzm_uzm_city_uzm_county_cityid")]
+		public uzm_city uzm_uzm_city_uzm_county_cityid
+		{
+			get
+			{
+				return this.GetRelatedEntity<uzm_city>("uzm_uzm_city_uzm_county_cityid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_uzm_city_uzm_county_cityid");
+				this.SetRelatedEntity<uzm_city>("uzm_uzm_city_uzm_county_cityid", null, value);
+				this.OnPropertyChanged("uzm_uzm_city_uzm_county_cityid");
 			}
 		}
 	}
@@ -12985,6 +13507,21 @@ namespace KMWG_MVCApp.DB
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("new_cityid")]
+		public Microsoft.Xrm.Sdk.EntityReference new_cityid
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("new_cityid");
+			}
+			set
+			{
+				this.OnPropertyChanging("new_cityid");
+				this.SetAttributeValue("new_cityid", value);
+				this.OnPropertyChanged("new_cityid");
+			}
+		}
+		
 		/// <summary>
 		/// Unique identifier for the organization
 		/// </summary>
@@ -13329,6 +13866,25 @@ namespace KMWG_MVCApp.DB
 				return this.GetRelatedEntity<SystemUser>("lk_uzm_portaluser_modifiedonbehalfby", null);
 			}
 		}
+		
+		/// <summary>
+		/// N:1 new_uzm_city_uzm_portaluser_cityid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("new_cityid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("new_uzm_city_uzm_portaluser_cityid")]
+		public uzm_city new_uzm_city_uzm_portaluser_cityid
+		{
+			get
+			{
+				return this.GetRelatedEntity<uzm_city>("new_uzm_city_uzm_portaluser_cityid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("new_uzm_city_uzm_portaluser_cityid");
+				this.SetRelatedEntity<uzm_city>("new_uzm_city_uzm_portaluser_cityid", null, value);
+				this.OnPropertyChanged("new_uzm_city_uzm_portaluser_cityid");
+			}
+		}
 	}
 
 	/// <summary>
@@ -13422,6 +13978,16 @@ namespace KMWG_MVCApp.DB
 			get
 			{
 				return this.CreateQuery<uzm_country>();
+			}
+		}
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="uzm_county"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<uzm_county> uzm_countySet
+		{
+			get
+			{
+				return this.CreateQuery<uzm_county>();
 			}
 		}
 		/// <summary>

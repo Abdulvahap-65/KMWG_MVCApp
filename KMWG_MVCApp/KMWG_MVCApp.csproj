@@ -118,6 +118,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\error.jpg" />
+    <Content Include="Content\jquery-3.5.1.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="DB\CrmSchema.tt">
       <Generator>CrmCodeGenerator2011</Generator>
@@ -203,8 +205,10 @@
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
+    <Compile Include="Models\County.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\IncidentModel.cs" />
+    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\CrmSdkService.cs" />
@@ -222,7 +226,6 @@
     <Content Include="Views\Shared\_Users.cshtml" />
     <Content Include="Views\Shared\_UserItem.cshtml" />
     <Content Include="Views\Shared\_UserCont.cshtml" />
-    <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Incident\Index.cshtml" />
     <Content Include="Views\City\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
@@ -230,6 +233,10 @@
     <Content Include="Views\Deneme\Index.cshtml" />
     <Content Include="Views\Deneme1\Index.cshtml" />
     <Content Include="Views\Bayram\Index.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\TumListe.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

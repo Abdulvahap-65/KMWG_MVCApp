@@ -22,9 +22,9 @@ namespace KMWG_MVCApp.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name= "Doğum Tarihi")]
         
-        public DateTime BDate { get; set; }
+        public DateTime? BDate { get; set; }
         [Display(Name = "Kilo")]
-        public int Kilo{ get; set; }
+        public int? Kilo{ get; set; }
 
         [Display(Name = "Adres")]
         public List<string> Address { get; set; }
@@ -32,18 +32,12 @@ namespace KMWG_MVCApp.Models
         [Display(Name = "Kullanıcı Grubu")]
         public UserGroupModel UserGroup { get; set; }
 
-        [Display(Name = "Şifre")]
-        public string Password { get; set; }
-        [Display(Name = "Kullanıcı Adı")]
-        public string UserName{ get; set; }
-
         [Display(Name = "Password")]
-        public string Password1 { get; set; }
+        public string Password { get; set; }
 
         [Display(Name = "Cinsiyeti")]
 
         public cinsiyet Cinsiyet{ get; set; }
-
 
         [Display(Name = "Ülke")]
         public country Country{ get; set; }
@@ -52,7 +46,7 @@ namespace KMWG_MVCApp.Models
         public string Konu { get; set; }
 
         public string CityId { get; set; }
-        public List<string[]> Cities { get; set; }
+       // public List<string[]> Cities { get; set; }
 
     }
     public class UserGroupModel
@@ -77,6 +71,27 @@ namespace KMWG_MVCApp.Models
         İspanya= 4,
         İngiltere= 5,
     }
-
-
+    
 }
+
+//TEST
+
+//public int? Population { get; set; }
+/*
+  if (countrymodel.Population != null)
+            entity["uzm_population"] = countrymodel.Population;
+     */
+//public DateTime? CreatedOn { get; set; }
+/* if(countrymodel.CreatedOn != null)
+   {
+       entity["createdon"] = countrymodel.CreatedOn;
+   }*/
+// public nationalityEnum? Nationality { get; set; }
+/* public enum nationalityEnum
+ {
+     American = 1,
+     Turkish = 2,
+     French = 3,
+     British = 4,
+     Others = 5
+ }*/

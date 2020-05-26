@@ -1,0 +1,94 @@
+﻿@model IEnumerable<KMWG_MVCApp.DB.uzm_portaluser>
+
+@{
+    ViewBag.Title = "TumListe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tüm Kullanılar</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kullanıcı Ekle", "Index")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.LogicalName)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.RowVersion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OverriddenCreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uzm_bdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uzm_name)
+        </th>
+        <th>
+            @Html.DisplayName("Password")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uzm_sifre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uzm_subject)
+        </th>
+        <th>
+            @Html.DisplayName("User Name")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.LogicalName)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.RowVersion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OverriddenCreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uzm_bdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uzm_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uzm_password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uzm_sifre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uzm_subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uzm_username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Görüntüle", "Details", new {  id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

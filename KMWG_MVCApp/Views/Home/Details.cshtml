@@ -1,0 +1,107 @@
+﻿@model KMWG_MVCApp.DB.uzm_portaluser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>uzm_portaluser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LogicalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogicalName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RowVersion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RowVersion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OverriddenCreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OverriddenCreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uzm_bdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uzm_bdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uzm_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uzm_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uzm_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uzm_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uzm_sifre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uzm_sifre)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Konu")
+        </dt>
+
+        <dd>
+            @Html.TextAreaFor(model => model.uzm_subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uzm_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uzm_username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
