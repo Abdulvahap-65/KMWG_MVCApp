@@ -6,7 +6,6 @@ using System.Web;
 
 namespace KMWG_MVCApp.Models
 {
-   
     public class UserModel
     {
         public UserModel()
@@ -14,39 +13,27 @@ namespace KMWG_MVCApp.Models
             this.Address = new List<string>();
         }
         public int Id { get; set; }
-        [Display(Name="Adı Soyadı")]
         public string Name { get; set; }
 
-        // [System.ComponentModel.DataAnnotations.DataType(DataType.Date)]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [Display(Name= "Doğum Tarihi")]
         
         public DateTime? BDate { get; set; }
-        [Display(Name = "Kilo")]
+       
         public int? Kilo{ get; set; }
 
-        [Display(Name = "Adres")]
         public List<string> Address { get; set; }
 
-        [Display(Name = "Kullanıcı Grubu")]
         public UserGroupModel UserGroup { get; set; }
 
-        [Display(Name = "Password")]
         public string Password { get; set; }
-
-        [Display(Name = "Cinsiyeti")]
-
         public cinsiyet Cinsiyet{ get; set; }
 
-        [Display(Name = "Ülke")]
         public country Country{ get; set; }
 
-        [Display(Name = "Subject")]
         public string Konu { get; set; }
 
-        public string CityId { get; set; }
-       // public List<string[]> Cities { get; set; }
+        public Guid? CityId { get; set; }
 
     }
     public class UserGroupModel
@@ -71,27 +58,4 @@ namespace KMWG_MVCApp.Models
         İspanya= 4,
         İngiltere= 5,
     }
-    
 }
-
-//TEST
-
-//public int? Population { get; set; }
-/*
-  if (countrymodel.Population != null)
-            entity["uzm_population"] = countrymodel.Population;
-     */
-//public DateTime? CreatedOn { get; set; }
-/* if(countrymodel.CreatedOn != null)
-   {
-       entity["createdon"] = countrymodel.CreatedOn;
-   }*/
-// public nationalityEnum? Nationality { get; set; }
-/* public enum nationalityEnum
- {
-     American = 1,
-     Turkish = 2,
-     French = 3,
-     British = 4,
-     Others = 5
- }*/

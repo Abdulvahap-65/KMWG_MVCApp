@@ -19,23 +19,19 @@
 
                     }
                 }
-
             </div>
         </div>
 
         @Html.ActionLink("Tüm Kullanıcılar", "TumListe", "Home", new { @class = "navbar-brand" })
-        @Html.ActionLink("Profil", "Profile", "Home", new { @class = "navbar-brand" })
+
         <ul class="nav navbar-nav navbar-right">
             @Html.ActionLink(" ", "Exit", "Home", new { @class = "navbar-brand glyphicon glyphicon-log-out", @title = "Çıkış Yap" })
         </ul>
-
-
     </div>
 
     <div class="container body-content">
         @RenderBody()
         <footer>
-            @DateTime.Today.ToShortDateString() MVC Uygulamam 1.0.0
         </footer>
     </div>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>

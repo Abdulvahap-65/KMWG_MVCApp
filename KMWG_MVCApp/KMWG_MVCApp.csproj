@@ -118,7 +118,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\error.jpg" />
+    <Content Include="Content\images\404.jpg" />
     <Content Include="Content\jquery-3.5.1.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="DB\CrmSchema.tt">
@@ -151,15 +151,12 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BayramController.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
-    <Compile Include="Controllers\Deneme1Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncidentController.cs" />
     <Compile Include="DB\Addresses.cs">
@@ -223,9 +220,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Shared\_Users.cshtml" />
-    <Content Include="Views\Shared\_UserItem.cshtml" />
-    <Content Include="Views\Shared\_UserCont.cshtml" />
     <Content Include="Views\Incident\Index.cshtml" />
     <Content Include="Views\City\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />

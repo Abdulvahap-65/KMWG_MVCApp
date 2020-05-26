@@ -4,6 +4,40 @@
     Layout = "";
 }
 
-<h2>Error</h2>
-<img src="~/Content/images/error.jpg" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>404 - Görüntülemek İstediğiniz Sayfa Bulunamadı.</title>
+    <style type="text/css">
+        body {
+            font-family: tahoma;
+        }
+
+        .firstWarning {
+            text-align: center;
+            font-size: 250%;
+            padding-top: 30px;
+            font-weight: bold;
+        }
+
+        .secondWarning {
+            text-align: center;
+            font-size: 125%;
+            padding-top: 10px;
+        }
+
+        .imgWarning {
+            position: absolute;
+            top: 26%;
+            left: 28%;
+        }
+    </style>
+</head>
+<body>
+    <div class="firstWarning">Görüntülemek İstediğiniz Sayfa Bulunamadı.</div>
+    <div class="secondWarning">Sayfa yayından kaldırılmış olabilir veya takip ettiğiniz adres hatalı olabilir.</div>
+    <img src="~/Content/images/404.jpg" class="imgWarning" />
+</body>
+</html>

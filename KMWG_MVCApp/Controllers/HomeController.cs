@@ -96,12 +96,12 @@ namespace KMWG_MVCApp.Controllers
                                            uzm_name = k.uzm_name,
                                            uzm_cityId = k.uzm_cityId
                                        }
-        ).ToList();//uzm_city varlığında kayıtlı olan bütün illeri çektim.
+        ).ToList();
 
 
             foreach (uzm_city cid in cityList)
             {
-                Guid cityid = cid.uzm_cityId.Value;//Kayıtlı illerin ID'sini teker teker görüyorum.
+                Guid cityid = cid.uzm_cityId.Value;
 
 
             }
@@ -124,6 +124,19 @@ namespace KMWG_MVCApp.Controllers
 
 
             List<uzm_county> countyList = _xrmContext.uzm_countySet.Where(x => x.uzm_cityid.Id == cityId).ToList();
+            ////CRM'de nationalities varlığından nationality name çekme
+            //List<uzm_nationality> NationalityList = _xrmContext.uzm_nationalitySet.ToList();
+            //uzm_nationality ulus = NationalityList.Where(i => i.uzm_name == "British").FirstOrDefault();
+            //Guid ulusid = ulus.uzm_nationalityId.Value;
+
+            //List<uzm_customer> CustomerList = _xrmContext.uzm_customerSet.ToList();
+            //uzm_customer Customer = new uzm_customer();
+            //Console.WriteLine(ulusid);
+            //Customer.uzm_nationalityid = new EntityReference("uzm_nationality", ulusid);//Xrm.Shemada  nationality lookup setleme
+
+
+
+
 
             return Json(countyList);
         }
@@ -136,55 +149,6 @@ namespace KMWG_MVCApp.Controllers
             db.UserGroup.Add(userGroup);
             db.SaveChanges();
             return View();
-        }
-
-        public new ActionResult Profile(int id = 10)
-        {
-            #region -1.Model Oluşturma-
-            //UserModel user = new UserModel()
-            //{
-            //    BDate = new DateTime(1992, 8, 30),
-            //    Cinsiyet = cinsiyet.Erkek,
-            //    Country = country.Türkiye,
-            //    Id = id,
-            //    Kilo = 72,
-            //    Name = "Fatih GÜRDAL",
-            //    Password = "123456",
-            //    UserName = "fatihgurdal",
-
-            //};
-            //user.Address.Add("Kocaeli Gölcük");
-            //user.Address.Add("Trabzon Merkez");
-            //user.Address.Add("İstanbul Kadıköy");
-
-            //user.UserGroup = new UserGroupModel()
-            //{
-            //    Id = 1,
-            //    Name = "Admin",
-            //};
-
-            #endregion
-            DB.User user = db.User.FirstOrDefault(x => x.Id == id);
-
-            List<SelectListItem> list = db.UserGroup.Select(x => new SelectListItem()
-            {
-                Text = x.Name,
-                Value = x.Id.ToString()
-            }).ToList();
-
-            TempData["KullaniciGruplari"] = list;
-
-            List<SelectListItem> item8 = new List<SelectListItem>();
-            item8.Add(new SelectListItem
-            {
-                Text = "USA",
-                Value = "1"
-            });
-            ViewBag.country = item8;
-
-            ViewBag.LastUsers = db.User.OrderByDescending(x => x.Id).Take(4).ToList();
-
-            return View(user);
         }
 
         #region -NOT:C# null controlers-
@@ -221,28 +185,18 @@ namespace KMWG_MVCApp.Controllers
         {
             Entity entity = new Entity("uzm_portaluser");
 
-            //entity["uzm_username"] = usermodel.UserName != null ? usermodel.UserName : "";
             entity["uzm_bdate"] = usermodel.BDate;
-
-            //  if(usermodel.BDate != null)
-            //{
-            //    entity["uzm_bdate"] = usermodel.BDate;
-            //}
             entity["uzm_iscinsiyet"] = new OptionSetValue((int)usermodel.Cinsiyet);
-            //if (usermodel.Cinsiyet != null)
-            //entity["uzm_iscinsiyet"] = new OptionSetValue((int)usermodel.Cinsiyet);
-
-            entity["uzm_name"] = usermodel.Name;
-            //entity["uzm_name"] = usermodel.Name != null ? usermodel.Name : "";
-            entity["uzm_sifre"] = usermodel.Password;
-            //entity["uzm_sifre"] = usermodel.Password!= null ? usermodel.Password : "";
+            entity["uzm_iscountry"] = new OptionSetValue((int)usermodel.Country);
+            entity["uzm_password"] = usermodel.Password;
             entity["uzm_subject"] = usermodel.Konu;
-            //entity["uzm_subject"] = usermodel.Konu != null ? usermodel.Konu : "";
+            entity["uzm_username"] = usermodel.Name;
             entity["uzm_weight"] = usermodel.Kilo;
-            //if (usermodel.Kilo != null)
-            //    entity["uzm_weight"] = usermodel.Kilo;
-            //entity["uzm_password"] = usermodel.Password1 != null ? usermodel.Password1 : "";
+            entity["uzm_name"] = usermodel.Name;
+            //entity["new_cityid"] = new EntityReference("new_cityid", usermodel.CityId.Value);
+
             var id = SaveToCrm(entity);
+          
             if (id != null)
             {
                 RedirectToAction("TumListe");
