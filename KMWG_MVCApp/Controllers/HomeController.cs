@@ -74,7 +74,7 @@ namespace KMWG_MVCApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-
+            #region -Alıştırma-
             //HomeModel m = new HomeModel();
             //m.Title = "Hello MVC";
             //m.Date = DateTime.Today;
@@ -88,8 +88,10 @@ namespace KMWG_MVCApp.Controllers
             //userModel = GetCity();
             //List<uzm_city> cityList = new List<uzm_city>();
             //cityList = GetCity();
-
             //GetCity();
+            #endregion
+
+
             List<uzm_city> cityList = (from k in _xrmContext.uzm_citySet
                                        select new uzm_city
                                        {
@@ -98,15 +100,12 @@ namespace KMWG_MVCApp.Controllers
                                        }
         ).ToList();
 
-
             foreach (uzm_city cid in cityList)
             {
                 Guid cityid = cid.uzm_cityId.Value;
 
 
             }
-
-
             ViewBag.CityList = new SelectList(cityList, "uzm_cityId", "uzm_name");
 
             return View();
@@ -122,81 +121,50 @@ namespace KMWG_MVCApp.Controllers
         {
             var tekCity = _xrmContext.uzm_citySet.Where(c => c.uzm_cityId == cityId).FirstOrDefault();
 
-
             List<uzm_county> countyList = _xrmContext.uzm_countySet.Where(x => x.uzm_cityid.Id == cityId).ToList();
-            ////CRM'de nationalities varlığından nationality name çekme
-            //List<uzm_nationality> NationalityList = _xrmContext.uzm_nationalitySet.ToList();
-            //uzm_nationality ulus = NationalityList.Where(i => i.uzm_name == "British").FirstOrDefault();
-            //Guid ulusid = ulus.uzm_nationalityId.Value;
-
-            //List<uzm_customer> CustomerList = _xrmContext.uzm_customerSet.ToList();
-            //uzm_customer Customer = new uzm_customer();
-            //Console.WriteLine(ulusid);
-            //Customer.uzm_nationalityid = new EntityReference("uzm_nationality", ulusid);//Xrm.Shemada  nationality lookup setleme
-
-
-
-
-
             return Json(countyList);
         }
+
+        #region -DB'ye Ekleme-
+        //public ActionResult Index(DB.User user, DB.Addresses addresses, DB.UserGroup userGroup)
+        //{
+        //    db.User.Add(user);
+        //    db.Addresses.Add(addresses);
+        //    db.UserGroup.Add(userGroup);
+        //    db.SaveChanges();
+        //    return View();
+        //}
+
+        #endregion
+
+       
         [HttpPost]
-
-        public ActionResult Index(DB.User user, DB.Addresses addresses, DB.UserGroup userGroup)
-        {
-            db.User.Add(user);
-            db.Addresses.Add(addresses);
-            db.UserGroup.Add(userGroup);
-            db.SaveChanges();
-            return View();
-        }
-
-        #region -NOT:C# null controlers-
-        #region -1.Date_Time-
-        //public DateTime? CreatedOn { get; set; }//Modelde olacak.
-        /* if(countrymodel.CreatedOn != null)
-           {
-               entity["createdon"] = countrymodel.CreatedOn;
-           }*///Conroler'da olacak.
-        #endregion
-        #region -2.Option Setleme-
-        // public nationalityEnum? Nationality { get; set; }//Modelde oacak.
-        /* public enum nationalityEnum
-         {
-             American = 1,
-             Turkish = 2,
-             French = 3,
-             British = 4,
-             Others = 5
-         }*/
-        //if (countrymodel.Nationality != null)
-        //      entity["uzm_isnationality"] = new OptionSetValue((int) countrymodel.Nationality);
-        //Controler tarafında olacak
-        #endregion
-        #region -3.Int-
-        //public int? Population { get; set; }//model tarafında olacak.
-
-        //  if (countrymodel.Population != null)
-        //            entity["uzm_population"] = countrymodel.Population;//Controler tarafında olacak.
-
-        #endregion
-        #endregion
         public void AddPortalUser(UserModel usermodel)
         {
+            Guid CityId = new Guid(usermodel.CityId);
             Entity entity = new Entity("uzm_portaluser");
+            Entity cityEntity = new Entity("uzm_city");
+            if (CityId != null)
+                entity["new_cityid"] = new EntityReference("uzm_city", CityId);
+   
+            if (usermodel.BDate != null)
+            {
+                entity["uzm_bdate"] = usermodel.BDate;
+            }
+            if (usermodel.Cinsiyet != null)
+                entity["uzm_iscinsiyet"] = new OptionSetValue((int)usermodel.Cinsiyet);
+            if (usermodel.Country != null)
+                entity["uzm_iscountry"] = new OptionSetValue((int)usermodel.Country);
+            entity["uzm_password"] = usermodel.Password != null ? usermodel.Password : "";
+            entity["uzm_subject"] = usermodel.Konu != null ? usermodel.Konu : "";
+            if (usermodel.Kilo != null)
+                entity["uzm_weight"] = usermodel.Kilo;
+            entity["uzm_name"] = usermodel.Name != null ? usermodel.Name : "";
+            entity["uzm_username"] = usermodel.UserName != null ? usermodel.UserName : "";
 
-            entity["uzm_bdate"] = usermodel.BDate;
-            entity["uzm_iscinsiyet"] = new OptionSetValue((int)usermodel.Cinsiyet);
-            entity["uzm_iscountry"] = new OptionSetValue((int)usermodel.Country);
-            entity["uzm_password"] = usermodel.Password;
-            entity["uzm_subject"] = usermodel.Konu;
-            entity["uzm_username"] = usermodel.Name;
-            entity["uzm_weight"] = usermodel.Kilo;
-            entity["uzm_name"] = usermodel.Name;
-            //entity["new_cityid"] = new EntityReference("new_cityid", usermodel.CityId.Value);
 
             var id = SaveToCrm(entity);
-          
+
             if (id != null)
             {
                 RedirectToAction("TumListe");
@@ -204,7 +172,6 @@ namespace KMWG_MVCApp.Controllers
             else
                 RedirectToAction("Error");
         }
-
         public Guid? SaveToCrm(Entity entity)
         {
             Guid? id = null;

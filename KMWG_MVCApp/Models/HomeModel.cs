@@ -11,8 +11,8 @@ namespace KMWG_MVCApp.Models
         public string Title { get; set; }
         public List<string> Items { get; set; }
         public DateTime Date { get; set; }
-        public cinsiyet Cinsiyet { get; set; }
-        public country Country{ get; set; }
+        public cinsiyetEnum? Cinsiyet { get; set; }
+        public countryEnum? Country{ get; set; }
         public UserGroupModel UserGroup { get; set; }
 
     }

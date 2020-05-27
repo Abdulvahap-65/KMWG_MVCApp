@@ -12,7 +12,7 @@ namespace KMWG_MVCApp.Models
         {
             this.Address = new List<string>();
         }
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Name { get; set; }
 
         [DataType(DataType.Date)]
@@ -25,15 +25,15 @@ namespace KMWG_MVCApp.Models
         public List<string> Address { get; set; }
 
         public UserGroupModel UserGroup { get; set; }
-
+        public string UserName { get; set; }
         public string Password { get; set; }
-        public cinsiyet Cinsiyet{ get; set; }
+        public cinsiyetEnum? Cinsiyet{ get; set; }
 
-        public country Country{ get; set; }
+        public countryEnum? Country{ get; set; }
 
         public string Konu { get; set; }
 
-        public Guid? CityId { get; set; }
+        public string CityId { get; set; }
 
     }
     public class UserGroupModel
@@ -42,14 +42,14 @@ namespace KMWG_MVCApp.Models
         public string Name { get; set; }
     }
 
-    public  enum cinsiyet
+    public  enum cinsiyetEnum
     {
         None=0,
         Erkek=1,
         Kadın=2,
     }
 
-    public enum country
+    public enum countryEnum
     {
         None = 0,
         Türkiye= 1,
