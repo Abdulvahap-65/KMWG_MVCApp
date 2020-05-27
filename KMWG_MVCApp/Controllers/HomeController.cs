@@ -70,6 +70,7 @@ namespace KMWG_MVCApp.Controllers
             return RedirectToAction("TumListe");
         }
 
+
         // GET: Home
         [HttpGet]
         public ActionResult Index()
