@@ -108,6 +108,20 @@ namespace KMWG_MVCApp.Controllers
             }
             ViewBag.CityList = new SelectList(cityList, "uzm_cityId", "uzm_name");
 
+
+            List<uzm_company> companyList = (from I in _xrmContext.uzm_companySet
+                                             select new uzm_company
+                                             {
+                                                 uzm_name = I.uzm_name,
+                                                 uzm_companyId = I.uzm_companyId
+                                             }
+    ).ToList();
+
+
+
+
+            ViewBag.CompanyList = new SelectList(companyList, "uzm_companyId", "uzm_name");
+
             return View();
         }
         public ActionResult TumListe()
@@ -137,16 +151,20 @@ namespace KMWG_MVCApp.Controllers
 
         #endregion
 
-       
+
         [HttpPost]
         public void AddPortalUser(UserModel usermodel)
         {
             Guid CityId = new Guid(usermodel.CityId);
+            Guid CompanyId = new Guid(usermodel.CompanyId);
+
             Entity entity = new Entity("uzm_portaluser");
-            Entity cityEntity = new Entity("uzm_city");
+         
             if (CityId != null)
                 entity["new_cityid"] = new EntityReference("uzm_city", CityId);
-   
+            if (CompanyId != null)
+                entity["uzm_companyid"] = new EntityReference("uzm_company", CompanyId);
+
             if (usermodel.BDate != null)
             {
                 entity["uzm_bdate"] = usermodel.BDate;

@@ -11,85 +11,92 @@
     @using (Html.BeginForm("SaveUser", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 
     {
-        <div class="box box-body">
+    <div class="box box-body">
 
-            @Html.Hidden("Id", "", new { @class = "form-control" })
-            <div class="form-group">
-                @Html.Label("lblName", "Name ", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBox("Name", "", new { @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.Label("lblBDate", "BDate", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.Editor("BDate", "", new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-
-                @Html.Label("lblWeight", "Weight", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.Editor("Kilo", "", new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-            </div>
-
-            @Html.Hidden("UserGroupId", "", new { @class = "form-control" })
-            <div class="form-group">
-
-                <div class="form-group">
-                    @Html.Label("lblUserName", "UserName ", new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBox("UserName", "", new { @class = "form-control" })
-                    </div>
-                </div>
-
-                @Html.Label("lblPassword", "Password", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBox("Password", "", new { @class = "form-control", type = "password" })
-                </div>
-            </div>
-            <div class="form-group">
-
-                @Html.Label("lblCinsiyet", "Cinsiyet", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("Cinsiyet", EnumHelper.GetSelectList(typeof(KMWG_MVCApp.Models.cinsiyetEnum)), "" + "Cinsiyet", new { @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-group">
-
-                @Html.Label("lblCountry", "Country", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("Country", EnumHelper.GetSelectList(typeof(KMWG_MVCApp.Models.countryEnum)), "" + "Country", new { @class = "form-control" })
-
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">City :</label>
-                <div class="col-md-10">
-                    @Html.DropDownList("CityId", (IEnumerable<SelectListItem>)ViewBag.CityList, "Select a city", new { @class = "form-control col" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">County :</label>
-                <div class="col-md-10">
-
-                    <select id="CountyId" name="CountyId" class="form-control"> </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-
-                @Html.Label("lblSubjet", "Subject", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextArea("Konu", "", new { @class = "form-control" })
-                </div>
+        @Html.Hidden("Id", "", new { @class = "form-control" })
+        <div class="form-group">
+            @Html.Label("lblName", "Name ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("Name", "", new { @class = "form-control" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.Label("lblBDate", "BDate", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("BDate", "", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            @Html.Label("lblWeight", "Weight", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("Kilo", "", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        @Html.Hidden("UserGroupId", "", new { @class = "form-control" })
+        <div class="form-group">
+
+            <div class="form-group">
+                @Html.Label("lblUserName", "UserName ", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("UserName", "", new { @class = "form-control" })
+                </div>
+            </div>
+
+            @Html.Label("lblPassword", "Password", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("Password", "", new { @class = "form-control", type = "password" })
+            </div>
+        </div>
+        <div class="form-group">
+
+            @Html.Label("lblCinsiyet", "Cinsiyet", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Cinsiyet", EnumHelper.GetSelectList(typeof(KMWG_MVCApp.Models.cinsiyetEnum)), "" + "Cinsiyet", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            @Html.Label("lblCountry", "Country", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Country", EnumHelper.GetSelectList(typeof(KMWG_MVCApp.Models.countryEnum)), "" + "Country", new { @class = "form-control" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">City :</label>
+            <div class="col-md-10">
+                @Html.DropDownList("CityId", (IEnumerable<SelectListItem>)ViewBag.CityList, "Select a city", new { @class = "form-control col" })
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label class="control-label col-md-2">County :</label>
+            <div class="col-md-10">
+
+                <select id="CountyId" name="CountyId" class="form-control"> </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group">
+                <label class="control-label col-md-2">Company :</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("CompanyId", (IEnumerable<SelectListItem>)ViewBag.CompanyList, "Select a company", new { @class = "form-control col" })
+                </div>
+            </div>
+
+            @Html.Label("lblSubjet", "Subject", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("Konu", "", new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

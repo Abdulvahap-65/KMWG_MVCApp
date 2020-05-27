@@ -30,10 +30,12 @@ namespace KMWG_MVCApp.Models
         public cinsiyetEnum? Cinsiyet{ get; set; }
 
         public countryEnum? Country{ get; set; }
+        public string CityId { get; set; }
+        public string CompanyId { get; set; }
 
         public string Konu { get; set; }
 
-        public string CityId { get; set; }
+       
 
     }
     public class UserGroupModel

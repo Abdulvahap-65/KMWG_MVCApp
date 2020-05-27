@@ -27,7 +27,7 @@ Global
 		Domain = 
 		WindowsAuthorization = False
 		Organization = uzmancrmdemos
-		IncludeEntities = account,contact,systemuser,uzm_account,uzm_category,uzm_city,uzm_country,uzm_county,uzm_incident,uzm_portaluser
+		IncludeEntities = account,contact,systemuser,uzm_account,uzm_category,uzm_city,uzm_company,uzm_country,uzm_county,uzm_incident,uzm_portaluser
 		IncludeNonStandard = True
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
