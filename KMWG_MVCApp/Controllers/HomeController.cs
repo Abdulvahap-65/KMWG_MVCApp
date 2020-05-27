@@ -1,5 +1,4 @@
-﻿
-using KMWG_MVCApp.DB;
+﻿using KMWG_MVCApp.DB;
 using KMWG_MVCApp.Models;
 using KMWG_MVCApp.Scripts;
 using Microsoft.Xrm.Sdk;
@@ -9,8 +8,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
-
 namespace KMWG_MVCApp.Controllers
 {
     public class HomeController : Controller
@@ -25,20 +22,15 @@ namespace KMWG_MVCApp.Controllers
             if (_crmSdkService != null)
                 _xrmContext = new XrmServiceContext(_crmSdkService.OrganizationService);
         }
-
         public ActionResult Login()
         {
-
             return View();
         }
-
         public ActionResult Details(Guid id)
         {
             var user = _xrmContext.uzm_portaluserSet.Where(u => u.Id == id).FirstOrDefault();
-
             return View(user);
         }
-
         [HttpPost]
         public ActionResult Login(UserLogin loginModel)
         {
@@ -48,7 +40,6 @@ namespace KMWG_MVCApp.Controllers
                 Session["UserInfo"] = user.uzm_username;
                 return RedirectToAction("TumListe");
             }
-
             else
                 return RedirectToAction("Error");
         }
@@ -60,17 +51,13 @@ namespace KMWG_MVCApp.Controllers
         {
             return RedirectToAction("Login");
         }
-
         #endregion
-
         [HttpPost]
         public ActionResult SaveUser(UserModel usermodel)
         {
             AddPortalUser(usermodel);
             return RedirectToAction("TumListe");
         }
-
-
         // GET: Home
         [HttpGet]
         public ActionResult Index()
@@ -91,8 +78,6 @@ namespace KMWG_MVCApp.Controllers
             //cityList = GetCity();
             //GetCity();
             #endregion
-
-
             List<uzm_city> cityList = (from k in _xrmContext.uzm_citySet
                                        select new uzm_city
                                        {
@@ -100,16 +85,11 @@ namespace KMWG_MVCApp.Controllers
                                            uzm_cityId = k.uzm_cityId
                                        }
         ).ToList();
-
             foreach (uzm_city cid in cityList)
             {
                 Guid cityid = cid.uzm_cityId.Value;
-
-
             }
             ViewBag.CityList = new SelectList(cityList, "uzm_cityId", "uzm_name");
-
-
             List<uzm_company> companyList = (from I in _xrmContext.uzm_companySet
                                              select new uzm_company
                                              {
@@ -117,12 +97,7 @@ namespace KMWG_MVCApp.Controllers
                                                  uzm_companyId = I.uzm_companyId
                                              }
     ).ToList();
-
-
-
-
             ViewBag.CompanyList = new SelectList(companyList, "uzm_companyId", "uzm_name");
-
             return View();
         }
         public ActionResult TumListe()
@@ -130,16 +105,13 @@ namespace KMWG_MVCApp.Controllers
             List<uzm_portaluser> tumListe = _xrmContext.uzm_portaluserSet.ToList();
             return View(tumListe);
         }
-
         [HttpPost]
         public ActionResult GetCounty(Guid? cityId)
         {
             var tekCity = _xrmContext.uzm_citySet.Where(c => c.uzm_cityId == cityId).FirstOrDefault();
-
             List<uzm_county> countyList = _xrmContext.uzm_countySet.Where(x => x.uzm_cityid.Id == cityId).ToList();
             return Json(countyList);
         }
-
         #region -DB'ye Ekleme-
         //public ActionResult Index(DB.User user, DB.Addresses addresses, DB.UserGroup userGroup)
         //{
@@ -149,23 +121,18 @@ namespace KMWG_MVCApp.Controllers
         //    db.SaveChanges();
         //    return View();
         //}
-
         #endregion
-
-
         [HttpPost]
         public void AddPortalUser(UserModel usermodel)
         {
             Guid CityId = new Guid(usermodel.CityId);
             Guid CompanyId = new Guid(usermodel.CompanyId);
-
             Entity entity = new Entity("uzm_portaluser");
          
             if (CityId != null)
                 entity["new_cityid"] = new EntityReference("uzm_city", CityId);
             if (CompanyId != null)
                 entity["uzm_companyid"] = new EntityReference("uzm_company", CompanyId);
-
             if (usermodel.BDate != null)
             {
                 entity["uzm_bdate"] = usermodel.BDate;
@@ -180,10 +147,7 @@ namespace KMWG_MVCApp.Controllers
                 entity["uzm_weight"] = usermodel.Kilo;
             entity["uzm_name"] = usermodel.Name != null ? usermodel.Name : "";
             entity["uzm_username"] = usermodel.UserName != null ? usermodel.UserName : "";
-
-
             var id = SaveToCrm(entity);
-
             if (id != null)
             {
                 RedirectToAction("TumListe");
@@ -205,12 +169,5 @@ namespace KMWG_MVCApp.Controllers
             }
             return id;
         }
-
-
     }
-
 }
-
-
-
-
