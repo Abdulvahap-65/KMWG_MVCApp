@@ -11,17 +11,9 @@
    
     <hr />
     <dl class="dl-horizontal">
-      
-        <dt>
-            @Html.DisplayNameFor(model => model.uzm_bdate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.uzm_bdate)
-        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.uzm_name)
+            @Html.DisplayName("Name         : ")
         </dt>
 
         <dd>
@@ -29,7 +21,31 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.uzm_password)
+            @Html.DisplayName("Birth Date : ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uzm_bdate)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayName("Weight:  ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uzm_weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("User Name: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uzm_username)
+        </dd>
+        <dt>
+            @Html.DisplayName("Password: ")
         </dt>
 
         <dd>
@@ -37,32 +53,77 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.uzm_password)
+            @Html.DisplayName("Gender: ")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.uzm_password)
-        </dd>
+            @*@Html.DropDownList("Cinsiyet", EnumHelper.GetSelectList(typeof(KMWG_MVCApp.Models.cinsiyetEnum)).Where(model => model.uzm_iscinsiyet), new { @class = "form-control" })*@
+            @Html.DisplayFor(model => model.uzm_iscinsiyet)
+          
 
+
+
+        </dd>
         <dt>
-            @Html.DisplayName("Konu")
+            @Html.DisplayName("Country: ")
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.uzm_iscountry)
+
+        </dd>
+        <dt>
+            @Html.DisplayName("City: ")
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.new_cityid.Name)
+        </dd>
+        <dt>
+            @Html.DisplayName("County: ")
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.new_countyid.Name)
+        </dd>
+        <dt>
+            @Html.DisplayName("Company: ")
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.new_countyid.Name)
+        </dd>
+        <dt>
+            @Html.DisplayName("Incident: ")
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.uzm_incidentid.Name)
+        </dd>
+        <dt>
+            @Html.DisplayName("Category: ")
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.uzm_categoryid.Name)
+        </dd>
+        <dt>
+            @Html.DisplayName("Subject: ")
         </dt>
 
         <dd>
             @Html.TextAreaFor(model => model.uzm_subject)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.uzm_username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.uzm_username)
-        </dd>
-
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "TumListe")
 </p>

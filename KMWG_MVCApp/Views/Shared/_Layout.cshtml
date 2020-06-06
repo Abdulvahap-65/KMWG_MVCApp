@@ -15,17 +15,18 @@
                 @{
                     if (Session["UserInfo"] != null)
                     {
-                        <div>@Session["UserInfo"].ToString() Hoş geldiniz</div>
+                        <div>Welcome: @Session["UserInfo"].ToString() </div>
 
                     }
                 }
             </div>
         </div>
 
-        @Html.ActionLink("Tüm Kullanıcılar", "TumListe", "Home", new { @class = "navbar-brand" })
+        @Html.ActionLink("All of Users", "TumListe", "Home", new { @class = "navbar-brand" })
+        @Html.ActionLink("Country-City-County", "UlkeIlIlceTum", "Home", new { @class = "navbar-brand" })
 
         <ul class="nav navbar-nav navbar-right">
-            @Html.ActionLink(" ", "Exit", "Home", new { @class = "navbar-brand glyphicon glyphicon-log-out", @title = "Çıkış Yap" })
+            @Html.ActionLink(" ", "Exit", "Home", new { @class = "navbar-brand glyphicon glyphicon-log-out", @title = "Exit" })
         </ul>
     </div>
 

@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "UlkeIlIlceTum";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Country-City-County</h3>
+<div class="row">
+
+    @using (Html.BeginForm("UlkeIlIlce", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    {
+        <div class="box box-body">
+            @*<div class="form-group">
+
+                    @Html.Label("lblCountry", "Country", new { @class = "control-label col-md-2" })
+
+                    <div class="col-md-10">
+                        @Html.DropDownList("Country", EnumHelper.GetSelectList(typeof(KMWG_MVCApp.Models.countryEnum)), "" + "Country", new { @class = "form-control" })
+
+                    </div>
+                </div>*@
+            @*aşağıyı ben yaptım*@
+            <div class="form-group">
+                <label class="control-label col-md-2">CountryTest</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("CountryId", (IEnumerable<SelectListItem>)ViewBag.CountryList, "Select a country", new { @class = "form-control col" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">City</label>
+                <div class="col-md-10">
+                    <select id="CityId" name="CityId" class="form-control"></select>
+                </div>
+            </div>
+            @*yuakrıyı ben yaptım*@
+
+            @*<div class="form-group">
+                    <label class="control-label col-md-2">City :</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("CityId", (IEnumerable<SelectListItem>)ViewBag.CityList, "Select a city", new { @class = "form-control col" })
+                    </div>
+                </div>*@
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Go To Counties" id="goToCounties" class="btn btn-default" />
+
+            </div>
+        </div>
+    }
+</div>
+
+<div id="ilceListesi">
+
+</div>
+
+<script src="~/Content/jquery-3.5.1.min.js"></script>
+
+<script type="text/javascript">
+
+    $("#goToCounties").click(function () {
+
+        $("#CountyId").empty();
+
+        var cityId = $("#CityId").val();
+
+        $.ajax({
+            url: '@Url.Action("UlkeIlIlce1", "Home")',
+            type: "POST",
+            dataType: "json",
+            data: { cityId: cityId },
+            success: function (data) {
+
+                var result = "";
+                result = '<ul>';
+
+                for (var x = 0; x < data.length; x++) {
+                    result += '<li>' + data[x].uzm_name + '</li>' + "<br>"
+                }
+
+                result += '</ul>';
+                document.getElementById("ilceListesi").innerHTML = result;
+            }
+        });
+    });
+
+
+     $("#CountryId").change(function () {
+
+        $("#CityId").empty();
+
+        var countryId = $("#CountryId").val();
+
+$.ajax({
+url: '@Url.Action("GetCity", "Home")',
+type: "POST",
+dataType: "json",
+    data: { countryId: countryId },
+success: function (data) {
+    $.each(data, function () {
+
+        $('#CityId').append('<option value=' + this.Id + '>' + this.uzm_name + '</option>');
+});
+}
+});
+});
+</script>

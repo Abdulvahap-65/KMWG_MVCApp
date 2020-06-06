@@ -11533,6 +11533,24 @@ namespace KMWG_MVCApp.DB
 		}
 		
 		/// <summary>
+		/// 1:N uzm_uzm_category_uzm_portaluser_categoryid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("uzm_uzm_category_uzm_portaluser_categoryid")]
+		public System.Collections.Generic.IEnumerable<uzm_portaluser> uzm_uzm_category_uzm_portaluser_categoryid
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_portaluser>("uzm_uzm_category_uzm_portaluser_categoryid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_uzm_category_uzm_portaluser_categoryid");
+				this.SetRelatedEntities<uzm_portaluser>("uzm_uzm_category_uzm_portaluser_categoryid", null, value);
+				this.OnPropertyChanged("uzm_uzm_category_uzm_portaluser_categoryid");
+			}
+		}
+		
+		/// <summary>
 		/// N:1 lk_uzm_category_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
@@ -11739,6 +11757,21 @@ namespace KMWG_MVCApp.DB
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("new_citycode")]
+		public string new_citycode
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("new_citycode");
+			}
+			set
+			{
+				this.OnPropertyChanging("new_citycode");
+				this.SetAttributeValue("new_citycode", value);
+				this.OnPropertyChanged("new_citycode");
+			}
+		}
+		
 		/// <summary>
 		/// Unique identifier for the organization
 		/// </summary>
@@ -11879,6 +11912,21 @@ namespace KMWG_MVCApp.DB
 					base.Id = System.Guid.Empty;
 				}
 				this.OnPropertyChanged("uzm_cityId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_countryid")]
+		public Microsoft.Xrm.Sdk.EntityReference uzm_countryid
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("uzm_countryid");
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_countryid");
+				this.SetAttributeValue("uzm_countryid", value);
+				this.OnPropertyChanged("uzm_countryid");
 			}
 		}
 		
@@ -12072,6 +12120,25 @@ namespace KMWG_MVCApp.DB
 			get
 			{
 				return this.GetRelatedEntity<SystemUser>("lk_uzm_city_modifiedonbehalfby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 uzm_uzm_country_uzm_city_countryid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_countryid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("uzm_uzm_country_uzm_city_countryid")]
+		public uzm_country uzm_uzm_country_uzm_city_countryid
+		{
+			get
+			{
+				return this.GetRelatedEntity<uzm_country>("uzm_uzm_country_uzm_city_countryid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_uzm_country_uzm_city_countryid");
+				this.SetRelatedEntity<uzm_country>("uzm_uzm_country_uzm_city_countryid", null, value);
+				this.OnPropertyChanged("uzm_uzm_country_uzm_city_countryid");
 			}
 		}
 	}
@@ -12877,6 +12944,42 @@ namespace KMWG_MVCApp.DB
 		}
 		
 		/// <summary>
+		/// 1:N uzm_uzm_country_uzm_city_countryid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("uzm_uzm_country_uzm_city_countryid")]
+		public System.Collections.Generic.IEnumerable<uzm_city> uzm_uzm_country_uzm_city_countryid
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_city>("uzm_uzm_country_uzm_city_countryid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_uzm_country_uzm_city_countryid");
+				this.SetRelatedEntities<uzm_city>("uzm_uzm_country_uzm_city_countryid", null, value);
+				this.OnPropertyChanged("uzm_uzm_country_uzm_city_countryid");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N uzm_uzm_country_uzm_portaluser_countryid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("uzm_uzm_country_uzm_portaluser_countryid")]
+		public System.Collections.Generic.IEnumerable<uzm_portaluser> uzm_uzm_country_uzm_portaluser_countryid
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_portaluser>("uzm_uzm_country_uzm_portaluser_countryid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_uzm_country_uzm_portaluser_countryid");
+				this.SetRelatedEntities<uzm_portaluser>("uzm_uzm_country_uzm_portaluser_countryid", null, value);
+				this.OnPropertyChanged("uzm_uzm_country_uzm_portaluser_countryid");
+			}
+		}
+		
+		/// <summary>
 		/// N:1 lk_uzm_country_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
@@ -13083,6 +13186,21 @@ namespace KMWG_MVCApp.DB
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("new_countycode")]
+		public string new_countycode
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("new_countycode");
+			}
+			set
+			{
+				this.OnPropertyChanging("new_countycode");
+				this.SetAttributeValue("new_countycode", value);
+				this.OnPropertyChanged("new_countycode");
+			}
+		}
+		
 		/// <summary>
 		/// Unique identifier for the organization
 		/// </summary>
@@ -13268,6 +13386,24 @@ namespace KMWG_MVCApp.DB
 			get
 			{
 				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N new_uzm_county_uzm_portaluser_countyid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("new_uzm_county_uzm_portaluser_countyid")]
+		public System.Collections.Generic.IEnumerable<uzm_portaluser> new_uzm_county_uzm_portaluser_countyid
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_portaluser>("new_uzm_county_uzm_portaluser_countyid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("new_uzm_county_uzm_portaluser_countyid");
+				this.SetRelatedEntities<uzm_portaluser>("new_uzm_county_uzm_portaluser_countyid", null, value);
+				this.OnPropertyChanged("new_uzm_county_uzm_portaluser_countyid");
 			}
 		}
 		
@@ -13494,6 +13630,21 @@ namespace KMWG_MVCApp.DB
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("new_portaluserid")]
+		public Microsoft.Xrm.Sdk.EntityReference new_portaluserid
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("new_portaluserid");
+			}
+			set
+			{
+				this.OnPropertyChanging("new_portaluserid");
+				this.SetAttributeValue("new_portaluserid", value);
+				this.OnPropertyChanged("new_portaluserid");
 			}
 		}
 		
@@ -13758,6 +13909,24 @@ namespace KMWG_MVCApp.DB
 		}
 		
 		/// <summary>
+		/// 1:N uzm_uzm_incident_uzm_portaluser_incidentid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("uzm_uzm_incident_uzm_portaluser_incidentid")]
+		public System.Collections.Generic.IEnumerable<uzm_portaluser> uzm_uzm_incident_uzm_portaluser_incidentid
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_portaluser>("uzm_uzm_incident_uzm_portaluser_incidentid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_uzm_incident_uzm_portaluser_incidentid");
+				this.SetRelatedEntities<uzm_portaluser>("uzm_uzm_incident_uzm_portaluser_incidentid", null, value);
+				this.OnPropertyChanged("uzm_uzm_incident_uzm_portaluser_incidentid");
+			}
+		}
+		
+		/// <summary>
 		/// N:1 lk_uzm_incident_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
@@ -13806,6 +13975,25 @@ namespace KMWG_MVCApp.DB
 			get
 			{
 				return this.GetRelatedEntity<SystemUser>("lk_uzm_incident_modifiedonbehalfby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 new_uzm_portaluser_uzm_incident_portaluserid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("new_portaluserid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("new_uzm_portaluser_uzm_incident_portaluserid")]
+		public uzm_portaluser new_uzm_portaluser_uzm_incident_portaluserid
+		{
+			get
+			{
+				return this.GetRelatedEntity<uzm_portaluser>("new_uzm_portaluser_uzm_incident_portaluserid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("new_uzm_portaluser_uzm_incident_portaluserid");
+				this.SetRelatedEntity<uzm_portaluser>("new_uzm_portaluser_uzm_incident_portaluserid", null, value);
+				this.OnPropertyChanged("new_uzm_portaluser_uzm_incident_portaluserid");
 			}
 		}
 		
@@ -13992,6 +14180,21 @@ namespace KMWG_MVCApp.DB
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("new_countyid")]
+		public Microsoft.Xrm.Sdk.EntityReference new_countyid
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("new_countyid");
+			}
+			set
+			{
+				this.OnPropertyChanging("new_countyid");
+				this.SetAttributeValue("new_countyid", value);
+				this.OnPropertyChanged("new_countyid");
+			}
+		}
+		
 		/// <summary>
 		/// Unique identifier for the organization
 		/// </summary>
@@ -14124,6 +14327,21 @@ namespace KMWG_MVCApp.DB
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_categoryid")]
+		public Microsoft.Xrm.Sdk.EntityReference uzm_categoryid
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("uzm_categoryid");
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_categoryid");
+				this.SetAttributeValue("uzm_categoryid", value);
+				this.OnPropertyChanged("uzm_categoryid");
+			}
+		}
+		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_companyid")]
 		public Microsoft.Xrm.Sdk.EntityReference uzm_companyid
 		{
@@ -14136,6 +14354,36 @@ namespace KMWG_MVCApp.DB
 				this.OnPropertyChanging("uzm_companyid");
 				this.SetAttributeValue("uzm_companyid", value);
 				this.OnPropertyChanged("uzm_companyid");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_countryid")]
+		public Microsoft.Xrm.Sdk.EntityReference uzm_countryid
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("uzm_countryid");
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_countryid");
+				this.SetAttributeValue("uzm_countryid", value);
+				this.OnPropertyChanged("uzm_countryid");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_incidentid")]
+		public Microsoft.Xrm.Sdk.EntityReference uzm_incidentid
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("uzm_incidentid");
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_incidentid");
+				this.SetAttributeValue("uzm_incidentid", value);
+				this.OnPropertyChanged("uzm_incidentid");
 			}
 		}
 		
@@ -14286,6 +14534,24 @@ namespace KMWG_MVCApp.DB
 		}
 		
 		/// <summary>
+		/// 1:N new_uzm_portaluser_uzm_incident_portaluserid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("new_uzm_portaluser_uzm_incident_portaluserid")]
+		public System.Collections.Generic.IEnumerable<uzm_incident> new_uzm_portaluser_uzm_incident_portaluserid
+		{
+			get
+			{
+				return this.GetRelatedEntities<uzm_incident>("new_uzm_portaluser_uzm_incident_portaluserid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("new_uzm_portaluser_uzm_incident_portaluserid");
+				this.SetRelatedEntities<uzm_incident>("new_uzm_portaluser_uzm_incident_portaluserid", null, value);
+				this.OnPropertyChanged("new_uzm_portaluser_uzm_incident_portaluserid");
+			}
+		}
+		
+		/// <summary>
 		/// N:1 lk_uzm_portaluser_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
@@ -14357,6 +14623,44 @@ namespace KMWG_MVCApp.DB
 		}
 		
 		/// <summary>
+		/// N:1 new_uzm_county_uzm_portaluser_countyid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("new_countyid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("new_uzm_county_uzm_portaluser_countyid")]
+		public uzm_county new_uzm_county_uzm_portaluser_countyid
+		{
+			get
+			{
+				return this.GetRelatedEntity<uzm_county>("new_uzm_county_uzm_portaluser_countyid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("new_uzm_county_uzm_portaluser_countyid");
+				this.SetRelatedEntity<uzm_county>("new_uzm_county_uzm_portaluser_countyid", null, value);
+				this.OnPropertyChanged("new_uzm_county_uzm_portaluser_countyid");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 uzm_uzm_category_uzm_portaluser_categoryid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_categoryid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("uzm_uzm_category_uzm_portaluser_categoryid")]
+		public uzm_category uzm_uzm_category_uzm_portaluser_categoryid
+		{
+			get
+			{
+				return this.GetRelatedEntity<uzm_category>("uzm_uzm_category_uzm_portaluser_categoryid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_uzm_category_uzm_portaluser_categoryid");
+				this.SetRelatedEntity<uzm_category>("uzm_uzm_category_uzm_portaluser_categoryid", null, value);
+				this.OnPropertyChanged("uzm_uzm_category_uzm_portaluser_categoryid");
+			}
+		}
+		
+		/// <summary>
 		/// N:1 uzm_uzm_company_uzm_portaluser_companyid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_companyid")]
@@ -14372,6 +14676,44 @@ namespace KMWG_MVCApp.DB
 				this.OnPropertyChanging("uzm_uzm_company_uzm_portaluser_companyid");
 				this.SetRelatedEntity<uzm_company>("uzm_uzm_company_uzm_portaluser_companyid", null, value);
 				this.OnPropertyChanged("uzm_uzm_company_uzm_portaluser_companyid");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 uzm_uzm_country_uzm_portaluser_countryid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_countryid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("uzm_uzm_country_uzm_portaluser_countryid")]
+		public uzm_country uzm_uzm_country_uzm_portaluser_countryid
+		{
+			get
+			{
+				return this.GetRelatedEntity<uzm_country>("uzm_uzm_country_uzm_portaluser_countryid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_uzm_country_uzm_portaluser_countryid");
+				this.SetRelatedEntity<uzm_country>("uzm_uzm_country_uzm_portaluser_countryid", null, value);
+				this.OnPropertyChanged("uzm_uzm_country_uzm_portaluser_countryid");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 uzm_uzm_incident_uzm_portaluser_incidentid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uzm_incidentid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("uzm_uzm_incident_uzm_portaluser_incidentid")]
+		public uzm_incident uzm_uzm_incident_uzm_portaluser_incidentid
+		{
+			get
+			{
+				return this.GetRelatedEntity<uzm_incident>("uzm_uzm_incident_uzm_portaluser_incidentid", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("uzm_uzm_incident_uzm_portaluser_incidentid");
+				this.SetRelatedEntity<uzm_incident>("uzm_uzm_incident_uzm_portaluser_incidentid", null, value);
+				this.OnPropertyChanged("uzm_uzm_incident_uzm_portaluser_incidentid");
 			}
 		}
 	}

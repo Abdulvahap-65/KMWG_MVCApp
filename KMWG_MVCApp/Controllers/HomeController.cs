@@ -22,15 +22,51 @@ namespace KMWG_MVCApp.Controllers
             if (_crmSdkService != null)
                 _xrmContext = new XrmServiceContext(_crmSdkService.OrganizationService);
         }
+
         public ActionResult Login()
         {
             return View();
         }
+
         public ActionResult Details(Guid id)
         {
-            var user = _xrmContext.uzm_portaluserSet.Where(u => u.Id == id).FirstOrDefault();
+            var user =
+                _xrmContext.uzm_portaluserSet
+                .Where(u => u.Id == id)
+                .FirstOrDefault();
             return View(user);
         }
+
+        public ActionResult DeleteUser(Guid id)
+        {
+            uzm_portaluser movie = _xrmContext.uzm_portaluserSet.Where(u => u.Id == id).FirstOrDefault();
+            if (movie != null)
+            {
+                _xrmContext.DeleteObject(movie); ;
+                SaveChangesResultCollection result = _xrmContext.SaveChanges();
+            }
+            return RedirectToAction("TumListe");
+        }
+        public ActionResult GetCountyAll(Guid UpdateTargetId)
+        {
+            var user =
+               _xrmContext.uzm_portaluserSet
+               .Where(u => u.Id == UpdateTargetId)
+               .FirstOrDefault();
+            return View(user);
+        }
+
+        public ActionResult UpdateUser(Guid id)
+        {
+            uzm_portaluser movie = _xrmContext.uzm_portaluserSet.Where(u => u.Id == id).FirstOrDefault();
+            if (movie != null)
+            {
+                _xrmContext.DeleteObject(movie); ;
+                SaveChangesResultCollection result = _xrmContext.SaveChanges();
+            }
+            return RedirectToAction("TumListe");
+        }
+
         [HttpPost]
         public ActionResult Login(UserLogin loginModel)
         {
@@ -43,6 +79,7 @@ namespace KMWG_MVCApp.Controllers
             else
                 return RedirectToAction("Error");
         }
+
         public ActionResult Error()
         {
             return View();
@@ -51,17 +88,78 @@ namespace KMWG_MVCApp.Controllers
         {
             return RedirectToAction("Login");
         }
+
+
+        public ActionResult UlkeIlIlce1(Guid cityId)
+        {
+            var counties = _xrmContext.uzm_countySet.Where(c => c.uzm_cityid.Id == cityId).ToList();
+            //    return View(counties);
+
+            ViewBag.CountyList = new SelectList(counties, "uzm_countyId", "uzm_name", "1");
+
+            return Json(counties);
+        }
+
+        public ActionResult UlkeIlIlce()//Guid cityId
+        {
+            //var ilIlce =
+            //     _xrmContext.uzm_countySet
+            //     .Where(i => i.Id == cityId)
+            //     .FirstOrDefault();
+            return RedirectToAction("UlkeIlIlce");
+        }
+
+        public ActionResult UlkeIlIlceTum()
+        {
+
+            ///Burayı  yaptım///////////////
+            List<uzm_country> countryList = (from k in _xrmContext.uzm_countrySet
+                                       select new uzm_country
+                                       {
+                                           uzm_name = k.uzm_name,
+                                           uzm_countryId = k.uzm_countryId
+                                       }
+        ).ToList();
+            foreach (uzm_country contry in countryList)
+            {
+                Guid countryid = contry.uzm_countryId.Value;
+            }
+            ViewBag.CountryList = new SelectList(countryList, "uzm_countryId", "uzm_name");
+            ///////////////////////////77777
+
+            List<uzm_city> cityList = (from k in _xrmContext.uzm_citySet
+                                       select new uzm_city
+                                       {
+                                           uzm_name = k.uzm_name,
+                                           uzm_cityId = k.uzm_cityId
+                                       }
+        ).ToList();
+            foreach (uzm_city cid in cityList)
+            {
+                Guid cityid = cid.uzm_cityId.Value;
+            }
+            ViewBag.CityList = new SelectList(cityList, "uzm_cityId", "uzm_name");
+
+
+
+
+
+            return View();
+        }
+
         #endregion
         [HttpPost]
         public ActionResult SaveUser(UserModel usermodel)
         {
             AddPortalUser(usermodel);
             return RedirectToAction("TumListe");
+
         }
         // GET: Home
         [HttpGet]
         public ActionResult Index()
         {
+            /*
             #region -Alıştırma-
             //HomeModel m = new HomeModel();
             //m.Title = "Hello MVC";
@@ -78,6 +176,20 @@ namespace KMWG_MVCApp.Controllers
             //cityList = GetCity();
             //GetCity();
             #endregion
+            /////////////////////////////////////////////////////////
+            ///*/
+            List<uzm_country> countryList = (from k in _xrmContext.uzm_countrySet
+                                            select new uzm_country
+                                            {
+                                                uzm_name = k.uzm_name,
+                                                uzm_countryId = k.uzm_countryId
+                                            }
+      ).ToList();
+            
+            ViewBag.CountryList = new SelectList(countryList, "uzm_countryId", "uzm_name");
+            /////////
+            ///
+            /*
             List<uzm_city> cityList = (from k in _xrmContext.uzm_citySet
                                        select new uzm_city
                                        {
@@ -90,6 +202,7 @@ namespace KMWG_MVCApp.Controllers
                 Guid cityid = cid.uzm_cityId.Value;
             }
             ViewBag.CityList = new SelectList(cityList, "uzm_cityId", "uzm_name");
+            */
             List<uzm_company> companyList = (from I in _xrmContext.uzm_companySet
                                              select new uzm_company
                                              {
@@ -98,20 +211,51 @@ namespace KMWG_MVCApp.Controllers
                                              }
     ).ToList();
             ViewBag.CompanyList = new SelectList(companyList, "uzm_companyId", "uzm_name");
+
+
+            List<uzm_incident> incidentList = (from i in _xrmContext.uzm_incidentSet
+                                               select new uzm_incident
+                                               {
+                                                   uzm_name = i.uzm_name,
+                                                   uzm_incidentId = i.uzm_incidentId
+                                               }
+ ).ToList();
+
+            ViewBag.IncidentList = new SelectList(incidentList, "uzm_incidentId", "uzm_name");
+
+            List<uzm_category> categorytList = (from i in _xrmContext.uzm_categorySet
+                                                select new uzm_category
+                                                {
+                                                    uzm_name = i.uzm_name,
+                                                    uzm_categoryId = i.uzm_categoryId
+                                                }
+ ).ToList();
+            ViewBag.CategoryList = new SelectList(categorytList, "uzm_categoryId", "uzm_name");
             return View();
         }
+
         public ActionResult TumListe()
         {
             List<uzm_portaluser> tumListe = _xrmContext.uzm_portaluserSet.ToList();
             return View(tumListe);
         }
+
         [HttpPost]
+
+        public ActionResult GetCity(Guid? countryId)
+        {
+            List<uzm_city> countryList = _xrmContext.uzm_citySet.Where(c => c.uzm_countryid.Id == countryId).ToList();
+            return Json(countryList);
+        }
+        //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         public ActionResult GetCounty(Guid? cityId)
         {
-            var tekCity = _xrmContext.uzm_citySet.Where(c => c.uzm_cityId == cityId).FirstOrDefault();
+            //var tekCity = _xrmContext.uzm_citySet.Where(c => c.uzm_cityId == cityId).FirstOrDefault();
             List<uzm_county> countyList = _xrmContext.uzm_countySet.Where(x => x.uzm_cityid.Id == cityId).ToList();
             return Json(countyList);
         }
+
+
         #region -DB'ye Ekleme-
         //public ActionResult Index(DB.User user, DB.Addresses addresses, DB.UserGroup userGroup)
         //{
@@ -125,22 +269,35 @@ namespace KMWG_MVCApp.Controllers
         [HttpPost]
         public void AddPortalUser(UserModel usermodel)
         {
+            Guid CountryId = new Guid(usermodel.CountryId);
             Guid CityId = new Guid(usermodel.CityId);
+            Guid CountyId = new Guid(usermodel.CountyId);
             Guid CompanyId = new Guid(usermodel.CompanyId);
+            Guid IncidentId = new Guid(usermodel.IncidentId);
+            Guid CategoryId = new Guid(usermodel.CategoryId);
             Entity entity = new Entity("uzm_portaluser");
-         
             if (CityId != null)
+                entity["uzm_countryid"] = new EntityReference("uzm_country", CountryId);
+           
+            if (CountryId != null)
                 entity["new_cityid"] = new EntityReference("uzm_city", CityId);
+            if (CountyId != null)
+                entity["new_countyid"] = new EntityReference("uzm_county", CountyId);
             if (CompanyId != null)
                 entity["uzm_companyid"] = new EntityReference("uzm_company", CompanyId);
+            if (IncidentId != null)
+                entity["uzm_incidentid"] = new EntityReference("uzm_incident", IncidentId);
+            if (CategoryId != null)
+                entity["uzm_categoryid"] = new EntityReference("uzm_category", CategoryId);
+
             if (usermodel.BDate != null)
             {
                 entity["uzm_bdate"] = usermodel.BDate;
             }
             if (usermodel.Cinsiyet != null)
                 entity["uzm_iscinsiyet"] = new OptionSetValue((int)usermodel.Cinsiyet);
-            if (usermodel.Country != null)
-                entity["uzm_iscountry"] = new OptionSetValue((int)usermodel.Country);
+            //if (usermodel.Country != null)
+            //    entity["uzm_iscountry"] = new OptionSetValue((int)usermodel.Country);
             entity["uzm_password"] = usermodel.Password != null ? usermodel.Password : "";
             entity["uzm_subject"] = usermodel.Konu != null ? usermodel.Konu : "";
             if (usermodel.Kilo != null)
@@ -155,6 +312,7 @@ namespace KMWG_MVCApp.Controllers
             else
                 RedirectToAction("Error");
         }
+
         public Guid? SaveToCrm(Entity entity)
         {
             Guid? id = null;
