@@ -2,6 +2,7 @@
 using KMWG_MVCApp.Models;
 using KMWG_MVCApp.Scripts;
 using Microsoft.Xrm.Sdk;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -89,44 +90,28 @@ namespace KMWG_MVCApp.Controllers
             return RedirectToAction("Login");
         }
 
-
-        public ActionResult UlkeIlIlce1(Guid cityId)
+        [HttpGet]
+        public ActionResult ShowDiscrit(Guid cityId)
         {
-            var counties = _xrmContext.uzm_countySet.Where(c => c.uzm_cityid.Id == cityId).ToList();
-            //    return View(counties);
-
-            ViewBag.CountyList = new SelectList(counties, "uzm_countyId", "uzm_name", "1");
-
-            return Json(counties);
-        }
-
-        public ActionResult UlkeIlIlce()//Guid cityId
-        {
-            //var ilIlce =
-            //     _xrmContext.uzm_countySet
-            //     .Where(i => i.Id == cityId)
-            //     .FirstOrDefault();
-            return RedirectToAction("UlkeIlIlce");
+            var resList = _xrmContext.uzm_countySet.Where(c => c.uzm_cityid.Id == cityId).ToList();
+            ViewBag.Test = resList;
+            return View(resList);
         }
 
         public ActionResult UlkeIlIlceTum()
         {
-
-            ///Burayı  yaptım///////////////
             List<uzm_country> countryList = (from k in _xrmContext.uzm_countrySet
-                                       select new uzm_country
-                                       {
-                                           uzm_name = k.uzm_name,
-                                           uzm_countryId = k.uzm_countryId
-                                       }
+                                             select new uzm_country
+                                             {
+                                                 uzm_name = k.uzm_name,
+                                                 uzm_countryId = k.uzm_countryId
+                                             }
         ).ToList();
             foreach (uzm_country contry in countryList)
             {
                 Guid countryid = contry.uzm_countryId.Value;
             }
             ViewBag.CountryList = new SelectList(countryList, "uzm_countryId", "uzm_name");
-            ///////////////////////////77777
-
             List<uzm_city> cityList = (from k in _xrmContext.uzm_citySet
                                        select new uzm_city
                                        {
@@ -139,10 +124,6 @@ namespace KMWG_MVCApp.Controllers
                 Guid cityid = cid.uzm_cityId.Value;
             }
             ViewBag.CityList = new SelectList(cityList, "uzm_cityId", "uzm_name");
-
-
-
-
 
             return View();
         }
@@ -159,50 +140,16 @@ namespace KMWG_MVCApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            /*
-            #region -Alıştırma-
-            //HomeModel m = new HomeModel();
-            //m.Title = "Hello MVC";
-            //m.Date = DateTime.Today;
-            //m.Items = new List<string>();
-            //m.Items.Add("Bu bir anasafadır");
-            //m.Items.Add("Hoem Controller içersindeki Index Action.");
-            //m.Items.Add("Bu sayfa bir model ile dolmaktadır.");
-            //List<User> lastUSers = db.User.OrderByDescending(x => x.Id).Take(4).ToList();
-            //ViewBag.LastUsers = lastUSers;
-            //UserModel userModel = new UserModel();
-            //userModel = GetCity();
-            //List<uzm_city> cityList = new List<uzm_city>();
-            //cityList = GetCity();
-            //GetCity();
-            #endregion
-            /////////////////////////////////////////////////////////
-            ///*/
             List<uzm_country> countryList = (from k in _xrmContext.uzm_countrySet
-                                            select new uzm_country
-                                            {
-                                                uzm_name = k.uzm_name,
-                                                uzm_countryId = k.uzm_countryId
-                                            }
+                                             select new uzm_country
+                                             {
+                                                 uzm_name = k.uzm_name,
+                                                 uzm_countryId = k.uzm_countryId
+                                             }
       ).ToList();
-            
+
             ViewBag.CountryList = new SelectList(countryList, "uzm_countryId", "uzm_name");
-            /////////
-            ///
-            /*
-            List<uzm_city> cityList = (from k in _xrmContext.uzm_citySet
-                                       select new uzm_city
-                                       {
-                                           uzm_name = k.uzm_name,
-                                           uzm_cityId = k.uzm_cityId
-                                       }
-        ).ToList();
-            foreach (uzm_city cid in cityList)
-            {
-                Guid cityid = cid.uzm_cityId.Value;
-            }
-            ViewBag.CityList = new SelectList(cityList, "uzm_cityId", "uzm_name");
-            */
+
             List<uzm_company> companyList = (from I in _xrmContext.uzm_companySet
                                              select new uzm_company
                                              {
@@ -247,7 +194,6 @@ namespace KMWG_MVCApp.Controllers
             List<uzm_city> countryList = _xrmContext.uzm_citySet.Where(c => c.uzm_countryid.Id == countryId).ToList();
             return Json(countryList);
         }
-        //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         public ActionResult GetCounty(Guid? cityId)
         {
             //var tekCity = _xrmContext.uzm_citySet.Where(c => c.uzm_cityId == cityId).FirstOrDefault();
@@ -278,7 +224,7 @@ namespace KMWG_MVCApp.Controllers
             Entity entity = new Entity("uzm_portaluser");
             if (CityId != null)
                 entity["uzm_countryid"] = new EntityReference("uzm_country", CountryId);
-           
+
             if (CountryId != null)
                 entity["new_cityid"] = new EntityReference("uzm_city", CityId);
             if (CountyId != null)

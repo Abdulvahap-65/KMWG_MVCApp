@@ -50,40 +50,15 @@
     }
 </div>
 
-<div id="ilceListesi">
-
-</div>
-
 <script src="~/Content/jquery-3.5.1.min.js"></script>
 
 <script type="text/javascript">
-
     $("#goToCounties").click(function () {
-
+        debugger;
         $("#CountyId").empty();
-
         var cityId = $("#CityId").val();
-
-        $.ajax({
-            url: '@Url.Action("UlkeIlIlce1", "Home")',
-            type: "POST",
-            dataType: "json",
-            data: { cityId: cityId },
-            success: function (data) {
-
-                var result = "";
-                result = '<ul>';
-
-                for (var x = 0; x < data.length; x++) {
-                    result += '<li>' + data[x].uzm_name + '</li>' + "<br>"
-                }
-
-                result += '</ul>';
-                document.getElementById("ilceListesi").innerHTML = result;
-            }
-        });
+        window.location = '/Home/ShowDiscrit?cityId=' + cityId;
     });
-
 
      $("#CountryId").change(function () {
 

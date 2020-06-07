@@ -1,0 +1,16 @@
+﻿ @{
+    ViewBag.Title = "ShowDiscrit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>County List</h2>
+
+@foreach (var item in ViewBag.Test)
+{
+<div>
+    <ul>
+        @item.uzm_name
+    </ul>
+</div>
+   
+}
